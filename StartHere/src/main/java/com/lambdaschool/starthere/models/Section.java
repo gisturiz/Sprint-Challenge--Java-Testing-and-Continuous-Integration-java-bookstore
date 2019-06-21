@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "section")
-public class Section
+public class Section extends Auditable
 {
     @ApiModelProperty(name = "sectionid", value = "Primary key for Section", required = true, example = "1")
     @Id

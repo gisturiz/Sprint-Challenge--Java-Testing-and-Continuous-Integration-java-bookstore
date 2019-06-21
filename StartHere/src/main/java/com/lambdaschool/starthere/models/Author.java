@@ -11,7 +11,7 @@ import java.util.List;
 @ApiModel(value = "Author", description = "Author Entity")
 @Entity
 @Table(name = "author")
-public class Author
+public class Author extends Auditable
 {
     @ApiModelProperty(name = "authorid", value = "Primary key for Author", required = true, example = "1")
     @Id
@@ -26,8 +26,8 @@ public class Author
 
     @ManyToMany
     @JoinTable(name = "wrote",
-        joinColumns = {@JoinColumn(name = "bookid")},
-        inverseJoinColumns = {@JoinColumn(name = "authorid")})
+        joinColumns = {@JoinColumn(name = "authorid")},
+        inverseJoinColumns = {@JoinColumn(name = "bookid")})
     @JsonIgnoreProperties("author")
     private List<Book> books = new ArrayList<>();
 

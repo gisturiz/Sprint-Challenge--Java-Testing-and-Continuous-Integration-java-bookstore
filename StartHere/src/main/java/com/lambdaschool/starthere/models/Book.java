@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "book")
-public class Book
+public class Book extends Auditable
 {
     @ApiModelProperty(name = "bookid", value = "Primary key for Book", required = true, example = "1")
     @Id
@@ -27,10 +27,10 @@ public class Book
 
     @ManyToOne
     @JoinColumn(name = "sectionid")
-    @JsonIgnoreProperties("book")
+    @JsonIgnoreProperties("books")
     private Section section;
 
-    @ManyToMany(mappedBy = "book")
+    @ManyToMany(mappedBy = "books")
     @JsonIgnoreProperties("books")
     private List<Author> authors = new ArrayList<>();
 
